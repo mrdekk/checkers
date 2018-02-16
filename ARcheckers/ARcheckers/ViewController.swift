@@ -81,8 +81,9 @@ class ViewController: UIViewController {
     private func hitTestChecker(side: Checker.Side, hit: SCNHitTestResult) {
         switch hit.node {
         case let checker as Checker:
-            if checker.side == side {
-                checkerboard?.took(checker)
+            if let cb = checkerboard, checker.side == side {
+                let moves = cb.took(checker)
+                cb.highlight(moves: moves)
             }
 
         case let cell as CheckerBoardCell:
