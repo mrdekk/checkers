@@ -89,7 +89,7 @@ class InitialVC: UIViewController, GKGameCenterControllerDelegate, GKLocalPlayer
     }
     
     
-    func matchmakerViewController(_ viewController: GKMatchmakerViewController, didFind match : GKTurnBasedMatch) {
+    func turnBasedMatchmakerViewController(_ viewController: GKTurnBasedMatchmakerViewController, didFind match: GKTurnBasedMatch) {
         if (!gcMatchStarted){
             gcMatchStarted = true
             viewController.dismiss(animated: true, completion: {
