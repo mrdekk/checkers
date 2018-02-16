@@ -66,14 +66,15 @@ class CheckerBoard : SCNNode {
                 
                 if (j < 3 && cell.isBlack){
                     let checker = Checker(side:.white)
-                    checker.position = placeCells(i: i, j:j, y:cellHeight)
+                    checker.position = placeCells(i: i, j:j, y:cellHeight-0.01)
+//                    print(checker.pivot)
                     whiteCheckers.append(checker)
                     addChildNode(checker)
                 }
                 
                 if (j > 4 && cell.isBlack){
                     let checker = Checker(side:.black)
-                    checker.position = placeCells(i: i, j:j, y:cellHeight)
+                    checker.position = placeCells(i: i, j:j, y:cellHeight-0.01)
                     blackCheckers.append(checker)
                     addChildNode(checker)
                 }
