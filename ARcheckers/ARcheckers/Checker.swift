@@ -17,11 +17,23 @@ class Checker: SCNNode {
     }
     
     public let side : Side
-    private let checkerSize = CGFloat(0.04)
+    public var i: Int
+    public var j: Int
+
+    var isGlowing: Bool = false {
+        didSet {
+            guard let geom = geometry, let mtrl = geom.materials.first else { return }
+            mtrl.fillMode = isGlowing ? .lines : .fill
+        }
+    }
     
-    init(side : Side) {
+    init(side : Side, i: Int, j: Int) {
         self.side = side
+        self.i = i
+        self.j = j
+
         super.init()
+        
         let geom = SCNCylinder(radius: checkerSize/2, height: 0.01)
         
         let mtrl = SCNMaterial()
@@ -37,3 +49,5 @@ class Checker: SCNNode {
     }
     
 }
+
+private let checkerSize = CGFloat(0.04)

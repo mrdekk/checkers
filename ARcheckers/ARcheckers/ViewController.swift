@@ -11,7 +11,8 @@ import ARKit
 
 enum GameMode {
     case initializing
-    case start
+    case black
+    case white
 }
 
 class ViewController: UIViewController {
@@ -53,18 +54,19 @@ class ViewController: UIViewController {
     }
 
     @objc func didTap(_ rec: UITapGestureRecognizer) {
-        switch mode {
-        case .initializing: hitTestAndPlaceCheckerboard(in: rec)
-        case .start: break
-        }
-    }
-
-    private func hitTestAndPlaceCheckerboard(in rec: UITapGestureRecognizer) {
         let pt = rec.location(in: rec.view)
         guard let hit = sceneView.hitTest(pt).first else {
             return
         }
 
+        switch mode {
+        case .initializing: hitTestAndPlaceCheckerboard(hit)
+        case .white: hitTestChecker(side: .white, hit: hit)
+        case .black: hitTestChecker(side: .black, hit: hit)
+        }
+    }
+
+    private func hitTestAndPlaceCheckerboard(_ hit: SCNHitTestResult) {
         let hitpos = hit.worldCoordinates
 
         let cb = CheckerBoard()
@@ -73,7 +75,28 @@ class ViewController: UIViewController {
 
         self.checkerboard = cb
 
-        mode = .start
+        mode = .white
+    }
+
+    private func hitTestChecker(side: Checker.Side, hit: SCNHitTestResult) {
+        switch hit.node {
+        case let checker as Checker:
+            if checker.side == side {
+                checkerboard?.took(checker)
+            }
+
+        case let cell as CheckerBoardCell:
+            if let cb = checkerboard, cb.place(cell) {
+                switch mode {
+                case .white: mode = .black
+                case .black: mode = .white
+                default: break
+                }
+            }
+
+        default:
+            break
+        }
     }
 }
 

@@ -11,9 +11,9 @@ import ARKit
 
 
 class CheckerBoardCell : SCNNode {
-    private let i: Int // 0 - 8
-    private let j: Int // 0 - 8
-    public let isBlack : Bool
+    let i: Int // 0 - 8
+    let j: Int // 0 - 8
+    let isBlack : Bool
     
     init(i: Int, j: Int) {
         self.i = i
@@ -27,7 +27,10 @@ class CheckerBoardCell : SCNNode {
             ? (i % 2 == 0 ? true : false)
             : (i % 2 == 0 ? false : true)
         
-        mtrl.diffuse.contents = isBlack ? UIColor.black : UIColor.white
+        mtrl.diffuse.contents = isBlack
+            ? UIColor(white: 0.25, alpha: 1.0)
+            : UIColor(white: 0.75, alpha: 1.0)
+        
         geom.materials = [mtrl]
 
         super.init()
@@ -45,9 +48,39 @@ class CheckerBoard : SCNNode {
     private var cells: [CheckerBoardCell] = []
     private var whiteCheckers : [Checker] = []
     private var blackCheckers : [Checker] = []
+
+    private var taken: Checker? = nil {
+        willSet {
+            taken?.isGlowing = false
+        }
+        didSet {
+            taken?.isGlowing = true
+        }
+    }
+
+    public func took(_ checker: Checker) {
+        taken = checker
+    }
+
+    public func place(_ cell: CheckerBoardCell) -> Bool {
+        if let taken = taken {
+            taken.i = cell.i
+            taken.j = cell.j
+
+            let moveAction = SCNAction.move(
+                to: placeCells(i: cell.i, j: cell.j, y: cellHeight),
+                duration: 0.3
+            )
+            taken.runAction(moveAction)
+            
+            self.taken = nil
+            return true
+        }
+
+        return false
+    }
     
-    
-    func placeCells(i : Int, j: Int, y: CGFloat = 0) -> SCNVector3{
+    private func placeCells(i: Int, j: Int, y: CGFloat = 0) -> SCNVector3{
         return SCNVector3(
             -0.5*boardSize + CGFloat(i) * cellSize,
             y,
@@ -66,15 +99,14 @@ class CheckerBoard : SCNNode {
                 
                 if (j < 3 && cell.isBlack){
                     let checker = Checker(side:.white)
-                    checker.position = placeCells(i: i, j:j, y:cellHeight-0.01)
-//                    print(checker.pivot)
+                    checker.position = placeCells(i: i, j: j, y: cellHeight - 0.01)
                     whiteCheckers.append(checker)
                     addChildNode(checker)
                 }
                 
                 if (j > 4 && cell.isBlack){
                     let checker = Checker(side:.black)
-                    checker.position = placeCells(i: i, j:j, y:cellHeight-0.01)
+                    checker.position = placeCells(i: i, j: j, y: cellHeight - 0.01)
                     blackCheckers.append(checker)
                     addChildNode(checker)
                 }
