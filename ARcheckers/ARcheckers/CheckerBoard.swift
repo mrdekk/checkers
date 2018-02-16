@@ -49,7 +49,14 @@ class CheckerBoard : SCNNode {
     private var whiteCheckers : [Checker] = []
     private var blackCheckers : [Checker] = []
 
-    private var taken: Checker? = nil
+    private var taken: Checker? = nil {
+        willSet {
+            taken?.isGlowing = false
+        }
+        didSet {
+            taken?.isGlowing = true
+        }
+    }
 
     public func took(_ checker: Checker) {
         taken = checker
@@ -57,7 +64,15 @@ class CheckerBoard : SCNNode {
 
     public func place(_ cell: CheckerBoardCell) -> Bool {
         if let taken = taken {
-            taken.position = placeCells(i: cell.i, j: cell.j, y: cellHeight)
+            taken.i = cell.i
+            taken.j = cell.j
+
+            let moveAction = SCNAction.move(
+                to: placeCells(i: cell.i, j: cell.j, y: cellHeight),
+                duration: 0.3
+            )
+            taken.runAction(moveAction)
+            
             self.taken = nil
             return true
         }
@@ -83,15 +98,15 @@ class CheckerBoard : SCNNode {
                 addChildNode(cell)
                 
                 if (j < 3 && cell.isBlack){
-                    let checker = Checker(side:.white)
-                    checker.position = placeCells(i: i, j:j, y:cellHeight)
+                    let checker = Checker(side:.white, i: i, j: j)
+                    checker.position = placeCells(i: i, j: j, y: cellHeight)
                     whiteCheckers.append(checker)
                     addChildNode(checker)
                 }
                 
                 if (j > 4 && cell.isBlack){
-                    let checker = Checker(side:.black)
-                    checker.position = placeCells(i: i, j:j, y:cellHeight)
+                    let checker = Checker(side:.black, i: i, j: j)
+                    checker.position = placeCells(i: i, j: j, y: cellHeight)
                     blackCheckers.append(checker)
                     addChildNode(checker)
                 }
