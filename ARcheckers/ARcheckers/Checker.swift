@@ -22,11 +22,7 @@ class Checker: SCNNode {
         let clr = isWhite ? UIColor.white : UIColor.black
         mtrl.diffuse.contents = clr
         geom.materials = [mtrl]
-        
-        
-        
-        
-        addChildNode(node)
+
     }
     
     required init?(coder aDecoder: NSCoder) {
