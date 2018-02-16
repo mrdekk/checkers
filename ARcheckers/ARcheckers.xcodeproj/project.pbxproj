@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		940B7044203738D100F10866 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B7043203738D100F10866 /* Board.swift */; };
+		940B704720373AA400F10866 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4881A82037360100B797C9 /* ViewController.swift */; };
+		940B704820373AA400F10866 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4881A62037360100B797C9 /* AppDelegate.swift */; };
+		940B704920373AA400F10866 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B7043203738D100F10866 /* Board.swift */; };
+		940B704C20373AA400F10866 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE4881AF2037360100B797C9 /* LaunchScreen.storyboard */; };
+		940B704D20373AA400F10866 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE4881AD2037360100B797C9 /* Assets.xcassets */; };
+		940B704E20373AA400F10866 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE4881AA2037360100B797C9 /* Main.storyboard */; };
 		CE4881A72037360100B797C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4881A62037360100B797C9 /* AppDelegate.swift */; };
 		CE4881A92037360100B797C9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4881A82037360100B797C9 /* ViewController.swift */; };
 		CE4881AC2037360100B797C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE4881AA2037360100B797C9 /* Main.storyboard */; };
@@ -17,6 +23,8 @@
 
 /* Begin PBXFileReference section */
 		940B7043203738D100F10866 /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		940B705220373AA400F10866 /* ARcheckersMrDekk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARcheckersMrDekk.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		940B705320373AA400F10866 /* ARcheckers copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ARcheckers copy-Info.plist"; path = "/Users/mrdekk/App/experiments/arkit/checkers2/ARcheckers/ARcheckers copy-Info.plist"; sourceTree = "<absolute>"; };
 		CE4881A32037360100B797C9 /* ARcheckers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARcheckers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE4881A62037360100B797C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE4881A82037360100B797C9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -27,6 +35,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		940B704A20373AA400F10866 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CE4881A02037360100B797C9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -42,6 +57,7 @@
 			children = (
 				CE4881A52037360100B797C9 /* ARcheckers */,
 				CE4881A42037360100B797C9 /* Products */,
+				940B705320373AA400F10866 /* ARcheckers copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -49,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				CE4881A32037360100B797C9 /* ARcheckers.app */,
+				940B705220373AA400F10866 /* ARcheckersMrDekk.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,6 +87,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		940B704520373AA400F10866 /* ARcheckersMrDekk */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 940B704F20373AA400F10866 /* Build configuration list for PBXNativeTarget "ARcheckersMrDekk" */;
+			buildPhases = (
+				940B704620373AA400F10866 /* Sources */,
+				940B704A20373AA400F10866 /* Frameworks */,
+				940B704B20373AA400F10866 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ARcheckersMrDekk;
+			productName = ARcheckers;
+			productReference = 940B705220373AA400F10866 /* ARcheckersMrDekk.app */;
+			productType = "com.apple.product-type.application";
+		};
 		CE4881A22037360100B797C9 /* ARcheckers */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE4881B52037360100B797C9 /* Build configuration list for PBXNativeTarget "ARcheckers" */;
@@ -97,6 +131,9 @@
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = Yandex;
 				TargetAttributes = {
+					940B704520373AA400F10866 = {
+						ProvisioningStyle = Automatic;
+					};
 					CE4881A22037360100B797C9 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
@@ -117,11 +154,22 @@
 			projectRoot = "";
 			targets = (
 				CE4881A22037360100B797C9 /* ARcheckers */,
+				940B704520373AA400F10866 /* ARcheckersMrDekk */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		940B704B20373AA400F10866 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				940B704C20373AA400F10866 /* LaunchScreen.storyboard in Resources */,
+				940B704D20373AA400F10866 /* Assets.xcassets in Resources */,
+				940B704E20373AA400F10866 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CE4881A12037360100B797C9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -135,6 +183,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		940B704620373AA400F10866 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				940B704720373AA400F10866 /* ViewController.swift in Sources */,
+				940B704820373AA400F10866 /* AppDelegate.swift in Sources */,
+				940B704920373AA400F10866 /* Board.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CE48819F2037360100B797C9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -167,6 +225,36 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		940B705020373AA400F10866 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U4UTNV8D5K;
+				INFOPLIST_FILE = "ARcheckers copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ru.yandex.ARcheckers.MrDekk;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		940B705120373AA400F10866 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U4UTNV8D5K;
+				INFOPLIST_FILE = "ARcheckers copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ru.yandex.ARcheckers.MrDekk;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		CE4881B32037360100B797C9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -305,6 +393,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		940B704F20373AA400F10866 /* Build configuration list for PBXNativeTarget "ARcheckersMrDekk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				940B705020373AA400F10866 /* Debug */,
+				940B705120373AA400F10866 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CE48819E2037360100B797C9 /* Build configuration list for PBXProject "ARcheckers" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
