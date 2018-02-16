@@ -9,11 +9,23 @@
 import UIKit
 import ARKit
 
+enum GameMode {
+    case initializing
+    case start
+}
+
 class ViewController: UIViewController {
+
+    private var mode: GameMode = .initializing
+
+    private var checkerboard: CheckerBoard? = nil
 
     @IBOutlet private weak var sceneView: ARSCNView! {
         didSet {
             sceneView.delegate = self
+
+            let rec = UITapGestureRecognizer(target: self, action: #selector(didTap))
+            sceneView.addGestureRecognizer(rec)
         }
     }
 
@@ -38,6 +50,30 @@ class ViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         sceneView.session.pause()
+    }
+
+    @objc func didTap(_ rec: UITapGestureRecognizer) {
+        switch mode {
+        case .initializing: hitTestAndPlaceCheckerboard(in: rec)
+        case .start: break
+        }
+    }
+
+    private func hitTestAndPlaceCheckerboard(in rec: UITapGestureRecognizer) {
+        let pt = rec.location(in: rec.view)
+        guard let hit = sceneView.hitTest(pt).first else {
+            return
+        }
+
+        let hitpos = hit.worldCoordinates
+
+        let cb = CheckerBoard()
+        cb.position = hitpos
+        sceneView.scene.rootNode.addChildNode(cb)
+
+        self.checkerboard = cb
+
+        mode = .start
     }
 }
 

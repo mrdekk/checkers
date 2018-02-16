@@ -14,6 +14,8 @@
 		940B704C20373AA400F10866 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE4881AF2037360100B797C9 /* LaunchScreen.storyboard */; };
 		940B704D20373AA400F10866 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE4881AD2037360100B797C9 /* Assets.xcassets */; };
 		940B704E20373AA400F10866 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE4881AA2037360100B797C9 /* Main.storyboard */; };
+		940B705520373EC000F10866 /* CheckerBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B705420373EC000F10866 /* CheckerBoard.swift */; };
+		940B7056203740DF00F10866 /* CheckerBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B705420373EC000F10866 /* CheckerBoard.swift */; };
 		CE4881A72037360100B797C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4881A62037360100B797C9 /* AppDelegate.swift */; };
 		CE4881A92037360100B797C9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4881A82037360100B797C9 /* ViewController.swift */; };
 		CE4881AC2037360100B797C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE4881AA2037360100B797C9 /* Main.storyboard */; };
@@ -25,6 +27,7 @@
 		940B7043203738D100F10866 /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		940B705220373AA400F10866 /* ARcheckersMrDekk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARcheckersMrDekk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		940B705320373AA400F10866 /* ARcheckers copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ARcheckers copy-Info.plist"; path = "/Users/mrdekk/App/experiments/arkit/checkers2/ARcheckers/ARcheckers copy-Info.plist"; sourceTree = "<absolute>"; };
+		940B705420373EC000F10866 /* CheckerBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckerBoard.swift; sourceTree = "<group>"; };
 		CE4881A32037360100B797C9 /* ARcheckers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARcheckers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE4881A62037360100B797C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE4881A82037360100B797C9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +83,7 @@
 				CE4881AD2037360100B797C9 /* Assets.xcassets */,
 				CE4881AF2037360100B797C9 /* LaunchScreen.storyboard */,
 				CE4881B22037360100B797C9 /* Info.plist */,
+				940B705420373EC000F10866 /* CheckerBoard.swift */,
 			);
 			path = ARcheckers;
 			sourceTree = "<group>";
@@ -189,6 +193,7 @@
 			files = (
 				940B704720373AA400F10866 /* ViewController.swift in Sources */,
 				940B704820373AA400F10866 /* AppDelegate.swift in Sources */,
+				940B7056203740DF00F10866 /* CheckerBoard.swift in Sources */,
 				940B704920373AA400F10866 /* Board.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -199,6 +204,7 @@
 			files = (
 				CE4881A92037360100B797C9 /* ViewController.swift in Sources */,
 				CE4881A72037360100B797C9 /* AppDelegate.swift in Sources */,
+				940B705520373EC000F10866 /* CheckerBoard.swift in Sources */,
 				940B7044203738D100F10866 /* Board.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
