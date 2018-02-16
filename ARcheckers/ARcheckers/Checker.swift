@@ -19,6 +19,9 @@ class Checker: SCNNode {
     public let side : Side
     public var i: Int
     public var j: Int
+    public var k: Int {
+        return j * 8 + i
+    }
 
     var isGlowing: Bool = false {
         didSet {

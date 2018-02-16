@@ -89,15 +89,32 @@ class ViewController: UIViewController {
     private func hitTestChecker(side: Checker.Side, hit: SCNHitTestResult) {
         switch hit.node {
         case let checker as Checker:
-            if checker.side == side {
-                checkerboard?.took(checker)
+            if let cb = checkerboard, checker.side == side {
+                let moves = cb.took(checker)
+                cb.highlight(moves: moves)
             }
 
         case let cell as CheckerBoardCell:
             if let cb = checkerboard, cb.place(cell) {
                 switch mode {
-                case .white: mode = .black
-                case .black: mode = .white
+                case .white:
+                    if cb.isWin(side: .white) {
+                        let alert = UIAlertController(title: "White Wins", message: "Hurray! White wins!", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        present(alert, animated: true, completion: nil)
+                        // TODO: go back in VC
+                    }
+                    mode = .black
+
+                case .black:
+                    if cb.isWin(side: .black) {
+                        let alert = UIAlertController(title: "Black Wins", message: "Hurray! Black wins!", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        present(alert, animated: true, completion: nil)
+                        // TODO: go back in VC
+                    }
+                    mode = .white
+
                 default: break
                 }
             }
