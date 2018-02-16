@@ -9,13 +9,15 @@
 import UIKit
 import GameKit
 
-class InitialVC: UIViewController, GKGameCenterControllerDelegate, GKLocalPlayerListener, GKMatchmakerViewControllerDelegate {
+class InitialVC: UIViewController, GKGameCenterControllerDelegate, GKLocalPlayerListener, GKTurnBasedMatchmakerViewControllerDelegate    {
+    
+    
+    
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var joinButton: UIButton!
-    
-    public var gcMatch : GKMatch? = nil
+
     
     var gcEnabled = Bool() // Check if the user has Game Center enabled
     var gcDefaultLeaderBoard = String() // Check the default leaderboardID
@@ -74,26 +76,40 @@ class InitialVC: UIViewController, GKGameCenterControllerDelegate, GKLocalPlayer
 
     }
     
-    func matchmakerViewControllerWasCancelled(_ viewController: GKMatchmakerViewController) {
+    func turnBasedMatchmakerViewControllerWasCancelled(_ viewController: GKTurnBasedMatchmakerViewController) {
         viewController.dismiss(animated: true, completion:nil)
     }
     
-    func matchmakerViewController(_ viewController: GKMatchmakerViewController, didFailWithError error: Error) {
+    func turnBasedMatchmakerViewController(_ viewController: GKTurnBasedMatchmakerViewController, didFailWithError error: Error) {
         viewController.dismiss(animated: true, completion:nil)
     }
     
     
-    func matchmakerViewController(_ viewController: GKMatchmakerViewController, didFind match : GKMatch) {
-        gcMatch = match
-//        match.delegate = self
-        if (!gcMatchStarted && gcMatch?.expectedPlayerCount == 0){
+    func matchmakerViewController(_ viewController: GKMatchmakerViewController, didFind match : GKTurnBasedMatch) {
+        if (!gcMatchStarted){
             gcMatchStarted = true
             viewController.dismiss(animated: true, completion: {
-                self.performSegue(withIdentifier: "showARScene", sender: self)
+                self.performSegue(withIdentifier: "showARScene", sender: match)
             })
         }
         //
     }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "showARScene"){
+            guard let destVC  = segue.destination as? ViewController else {
+                return
+            }
+            guard let match = sender as? GKTurnBasedMatch else {
+                return
+            }
+            destVC.match = match
+        }
+    }
+//    func matchmakerViewController(_ viewController: GKMatchmakerViewController, didFindHostedPlayers players : Array) {
+//
+//    }
     
     // MARK: - OPEN GAME CENTER LEADERBOARD
     func checkGCLeaderboard() {
@@ -107,11 +123,12 @@ class InitialVC: UIViewController, GKGameCenterControllerDelegate, GKLocalPlayer
     func createMatch() {
         let gcMatchRequest = GKMatchRequest.init()
         gcMatchRequest.defaultNumberOfPlayers = 2
+        gcMatchRequest.minPlayers = 2
+        gcMatchRequest.maxPlayers = 2
         gcMatchRequest.inviteMessage = "Hello, Let's play checkers"
-        guard let gcVC = GKMatchmakerViewController.init(matchRequest: gcMatchRequest) else {
-            return
-        }
-        gcVC.matchmakerDelegate = self
+        let gcVC = GKTurnBasedMatchmakerViewController.init(matchRequest: gcMatchRequest)
+        gcVC.showExistingMatches = true
+        gcVC.turnBasedMatchmakerDelegate = self
         present(gcVC, animated: true, completion: nil)
         
     }

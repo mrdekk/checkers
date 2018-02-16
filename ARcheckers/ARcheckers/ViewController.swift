@@ -8,6 +8,7 @@
 
 import UIKit
 import ARKit
+import GameKit
 
 enum GameMode {
     case initializing
@@ -15,7 +16,7 @@ enum GameMode {
     case white
 }
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, GKLocalPlayerListener {
 
     @IBOutlet weak var closeButton: UIButton!
     
@@ -24,6 +25,8 @@ class ViewController: UIViewController {
             //clear gameCenterSession
         }
     }
+    
+    public var match : GKTurnBasedMatch? = nil
     
     private var mode: GameMode = .initializing
 
@@ -84,6 +87,12 @@ class ViewController: UIViewController {
         self.checkerboard = cb
 
         mode = .white
+        let participant = match?.participants
+        let msgReady = [String : Any]()
+        let packet = try! JSONSerialization.data(withJSONObject: msgReady, options:[])
+        match?.endTurn(withNextParticipants: [participant!.last!], turnTimeout: 1000, match: packet, completionHandler: { (_) in
+            // End of the turn
+        })
     }
 
     private func hitTestChecker(side: Checker.Side, hit: SCNHitTestResult) {
