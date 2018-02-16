@@ -8,29 +8,62 @@
 
 import ARKit
 
-class CheckerBoard : SCNNode {
+class CheckerBoardCell : SCNNode {
+    private(set) var i: Int = 0 // 0 - 8
+    private(set) var j: Int = 0 // 0 - 8
 
-    private let node: SCNNode
+    init(i: Int, j: Int) {
+        self.i = i
+        self.j = j
 
-    override init() {
-        let geom = SCNBox(width: 0.4, height: 0.4, length: 0.03, chamferRadius: 0.01)
+        let geom = SCNBox(width: cellSize, height: 0.03, length: cellSize, chamferRadius: 0)
 
         let mtrl = SCNMaterial()
 
-        let clr = UIColor.red
+        let clr = j % 2 == 0
+            ? (i % 2 == 0 ? UIColor.black : UIColor.white)
+            : (i % 2 == 0 ? UIColor.white : UIColor.black)
         mtrl.diffuse.contents = clr
         geom.materials = [mtrl]
 
-        node = SCNNode(geometry: geom)
-        node.position = SCNVector3(0, 0, 0)
-        node.transform = SCNMatrix4MakeRotation(-Float.pi / 2.0, 1.0, 0.0, 0.0)
+        super.init()
+
+        self.geometry = geom
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+class CheckerBoard : SCNNode {
+
+    private var cells: [CheckerBoardCell] = []
+
+    override init() {
+        for j in 0...8 {
+            for i in 0...8 {
+                let cell = CheckerBoardCell(i: i, j: j)
+                cell.position = SCNVector3(
+                    -0.2 + CGFloat(i) * cellSize,
+                    0,
+                    -0.2 + CGFloat(j) * cellSize
+                )
+
+                cells.append(cell)
+            }
+        }
 
         super.init()
-        
-        addChildNode(node)
+
+        for cell in cells {
+            addChildNode(cell)
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError()
     }
 }
+
+private let cellSize = CGFloat(0.05)
