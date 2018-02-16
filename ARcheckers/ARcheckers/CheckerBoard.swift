@@ -8,22 +8,26 @@
 
 import ARKit
 
-class CheckerBoardCell : SCNNode {
-    private(set) var i: Int = 0 // 0 - 8
-    private(set) var j: Int = 0 // 0 - 8
 
+
+class CheckerBoardCell : SCNNode {
+    private let i: Int // 0 - 8
+    private let j: Int // 0 - 8
+    public let isBlack : Bool
+    
     init(i: Int, j: Int) {
         self.i = i
         self.j = j
-
-        let geom = SCNBox(width: cellSize, height: 0.03, length: cellSize, chamferRadius: 0)
+        
+        let geom = SCNBox(width: cellSize, height: cellHeight, length: cellSize, chamferRadius: 0)
 
         let mtrl = SCNMaterial()
 
-        let clr = j % 2 == 0
-            ? (i % 2 == 0 ? UIColor.black : UIColor.white)
-            : (i % 2 == 0 ? UIColor.white : UIColor.black)
-        mtrl.diffuse.contents = clr
+        isBlack = j % 2 == 0
+            ? (i % 2 == 0 ? true : false)
+            : (i % 2 == 0 ? false : true)
+        
+        mtrl.diffuse.contents = isBlack ? UIColor.black : UIColor.white
         geom.materials = [mtrl]
 
         super.init()
@@ -39,25 +43,42 @@ class CheckerBoardCell : SCNNode {
 class CheckerBoard : SCNNode {
 
     private var cells: [CheckerBoardCell] = []
-
+    private var whiteCheckers : [Checker] = []
+    private var blackCheckers : [Checker] = []
+    
+    
+    func placeCells(i : Int, j: Int, y: CGFloat = 0) -> SCNVector3{
+        return SCNVector3(
+            -0.5*boardSize + CGFloat(i) * cellSize,
+            y,
+            -0.5*boardSize + CGFloat(j) * cellSize
+        )
+    }
+    
     override init() {
+        super.init()
         for j in 0...8 {
             for i in 0...8 {
                 let cell = CheckerBoardCell(i: i, j: j)
-                cell.position = SCNVector3(
-                    -0.2 + CGFloat(i) * cellSize,
-                    0,
-                    -0.2 + CGFloat(j) * cellSize
-                )
-
+                cell.position = placeCells(i: i, j:j)
                 cells.append(cell)
+                addChildNode(cell)
+                
+                if (j < 3 && cell.isBlack){
+                    let checker = Checker(side:.white)
+                    checker.position = placeCells(i: i, j:j, y:cellHeight)
+                    whiteCheckers.append(checker)
+                    addChildNode(checker)
+                }
+                
+                if (j > 4 && cell.isBlack){
+                    let checker = Checker(side:.black)
+                    checker.position = placeCells(i: i, j:j, y:cellHeight)
+                    blackCheckers.append(checker)
+                    addChildNode(checker)
+                }
+                
             }
-        }
-
-        super.init()
-
-        for cell in cells {
-            addChildNode(cell)
         }
     }
 
@@ -67,3 +88,5 @@ class CheckerBoard : SCNNode {
 }
 
 private let cellSize = CGFloat(0.05)
+private let boardSize = CGFloat(0.4)
+private let cellHeight = CGFloat(0.03)

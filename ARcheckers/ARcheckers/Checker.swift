@@ -10,18 +10,26 @@ import ARKit
 
 class Checker: SCNNode {
 
-    public let isWhite = true
+    enum Side {
+        case white
+        case black
+        
+    }
     
+    public let side : Side
+    private let checkerSize = CGFloat(0.04)
     
-    override init() {
+    init(side : Side) {
+        self.side = side
         super.init()
-        let geom = SCNCylinder(radius: 0.02, height: 0.01)
+        let geom = SCNCylinder(radius: checkerSize/2, height: 0.01)
         
         let mtrl = SCNMaterial()
         
-        let clr = isWhite ? UIColor.white : UIColor.black
+        let clr = side == .white ? UIColor.white : UIColor.black
         mtrl.diffuse.contents = clr
         geom.materials = [mtrl]
+        self.geometry = geom
     }
     
     required init?(coder aDecoder: NSCoder) {
