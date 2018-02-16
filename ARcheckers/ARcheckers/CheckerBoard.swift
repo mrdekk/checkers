@@ -11,9 +11,9 @@ import ARKit
 
 
 class CheckerBoardCell : SCNNode {
-    private let i: Int // 0 - 8
-    private let j: Int // 0 - 8
-    public let isBlack : Bool
+    let i: Int // 0 - 8
+    let j: Int // 0 - 8
+    let isBlack : Bool
     
     init(i: Int, j: Int) {
         self.i = i
@@ -27,7 +27,10 @@ class CheckerBoardCell : SCNNode {
             ? (i % 2 == 0 ? true : false)
             : (i % 2 == 0 ? false : true)
         
-        mtrl.diffuse.contents = isBlack ? UIColor.black : UIColor.white
+        mtrl.diffuse.contents = isBlack
+            ? UIColor(white: 0.25, alpha: 1.0)
+            : UIColor(white: 0.75, alpha: 1.0)
+        
         geom.materials = [mtrl]
 
         super.init()
@@ -45,9 +48,24 @@ class CheckerBoard : SCNNode {
     private var cells: [CheckerBoardCell] = []
     private var whiteCheckers : [Checker] = []
     private var blackCheckers : [Checker] = []
+
+    private var taken: Checker? = nil
+
+    public func took(_ checker: Checker) {
+        taken = checker
+    }
+
+    public func place(_ cell: CheckerBoardCell) -> Bool {
+        if let taken = taken {
+            taken.position = placeCells(i: cell.i, j: cell.j, y: cellHeight)
+            self.taken = nil
+            return true
+        }
+
+        return false
+    }
     
-    
-    func placeCells(i : Int, j: Int, y: CGFloat = 0) -> SCNVector3{
+    private func placeCells(i: Int, j: Int, y: CGFloat = 0) -> SCNVector3{
         return SCNVector3(
             -0.5*boardSize + CGFloat(i) * cellSize,
             y,

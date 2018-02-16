@@ -25,10 +25,11 @@ class Board : SCNNode {
         self.planeGeometry = geom
 
         let mtrl = SCNMaterial()
-//        let img = UIImage(named: "board")
-//        mtrl.diffuse.contents = img
-        let clr = UIColor.cyan.withAlphaComponent(0.25)
-        mtrl.diffuse.contents = clr
+        let img = UIImage(named: "board")
+        mtrl.diffuse.contents = img
+        mtrl.transparency = 0.3
+//        let clr = UIColor.cyan.withAlphaComponent(0.25)
+//        mtrl.diffuse.contents = clr
         geom.materials = [mtrl]
 
         let node = SCNNode(geometry: geom)
