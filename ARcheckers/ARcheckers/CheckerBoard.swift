@@ -175,7 +175,29 @@ class CheckerBoard : SCNNode {
 
         return false
     }
-    
+
+    func isWin(side: Checker.Side) -> Bool {
+        switch side {
+        case .white:
+            if blackCheckers.isEmpty {
+                return true
+            }
+            let moves = blackCheckers.values.flatMap {
+                search($0, i: $0.i, j: $0.j, takes: false, blocked: Set<Int>())
+            }
+            return moves.isEmpty
+
+        case .black:
+            if whiteCheckers.isEmpty {
+                return true
+            }
+            let moves = whiteCheckers.values.flatMap {
+                search($0, i: $0.i, j: $0.j, takes: false, blocked: Set<Int>())
+            }
+            return moves.isEmpty
+        }
+    }
+
     private func placeCells(i: Int, j: Int, y: CGFloat = 0) -> SCNVector3{
         return SCNVector3(
             -0.5*boardSize + CGFloat(i) * cellSize,
