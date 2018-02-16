@@ -53,14 +53,14 @@ class CheckerBoardCell : SCNNode {
 }
 
 struct Move {
-    typealias Step = (i: Int, j: Int)
+    typealias Step = (i: Int, j: Int, took: Int?)
     let steps: [Step]
     init(steps: [Step]) {
         self.steps = steps
     }
 
-    init(i: Int, j: Int) {
-        self.init(steps: [(i: i, j: j)])
+    init(i: Int, j: Int, took: Int?) {
+        self.init(steps: [(i: i, j: j, took: took)])
     }
 
     var destination: Step? {
@@ -108,8 +108,12 @@ class CheckerBoard : SCNNode {
         guard dest.contains(cell.j * 8 + cell.i) else {
             return false
         }
-        
-        if let taken = taken {
+
+        let pmove = moves.first { (move) -> Bool in
+            guard let dest = move.destination else { return false }
+            return dest.i == cell.i && dest.j == cell.j
+        }
+        if let taken = taken, let move = pmove {
             let pso = taken.j * 8 + taken.i
             let psn = cell.j * 8 + cell.i
 
@@ -126,11 +130,43 @@ class CheckerBoard : SCNNode {
                 blackCheckers[psn] = taken
             }
 
-            let moveAction = SCNAction.move(
-                to: placeCells(i: cell.i, j: cell.j, y: cellHeight),
-                duration: 0.3
-            )
-            taken.runAction(moveAction)
+            let actions: [SCNAction] = move.steps.flatMap {
+                if let took = $0.took {
+                    let tj = took / 8
+                    let ti = took % 8
+                    let seq: [SCNAction] = [
+                        SCNAction.move(
+                            to: placeCells(i: ti, j: tj, y: 2 * checkerY),
+                            duration: 0.3
+                        ),
+                        SCNAction.run({ [weak self] _ in
+                            guard let sself = self else { return }
+                            if let ch = sself.whiteCheckers[took] {
+                                ch.removeFromParentNode()
+                                sself.whiteCheckers[took] = nil
+                            }
+                            if let ch = sself.blackCheckers[took] {
+                                ch.removeFromParentNode()
+                                sself.blackCheckers[took] = nil
+                            }
+                        }),
+                        SCNAction.move(
+                            to: placeCells(i: $0.i, j: $0.j, y: checkerY),
+                            duration: 0.3
+                        )
+                    ]
+                    return SCNAction.sequence(seq)
+                } else {
+                    return SCNAction.move(
+                        to: placeCells(i: $0.i, j: $0.j, y: checkerY),
+                        duration: 0.3
+                    )
+                }
+            }
+            if !actions.isEmpty {
+                let sequence = SCNAction.sequence(actions)
+                taken.runAction(sequence)
+            }
             
             self.taken = nil
             highlight(moves: [])
@@ -167,18 +203,18 @@ class CheckerBoard : SCNNode {
             switch checker.side {
             case .white:
                 if i - 1 >= 0, j + 1 < 8, isEmptyAt(i: i - 1, j: j + 1) == nil {
-                    res.append(Move(i: i - 1, j: j + 1))
+                    res.append(Move(i: i - 1, j: j + 1, took: nil))
                 }
                 if i + 1 < 8, j + 1 < 8, isEmptyAt(i: i + 1, j: j + 1) == nil {
-                    res.append(Move(i: i + 1, j: j + 1))
+                    res.append(Move(i: i + 1, j: j + 1, took: nil))
                 }
 
             case .black:
                 if i - 1 >= 0, j - 1 >= 0, isEmptyAt(i: i - 1, j: j - 1) == nil {
-                    res.append(Move(i: i - 1, j: j - 1))
+                    res.append(Move(i: i - 1, j: j - 1, took: nil))
                 }
                 if i + 1 < 8, j - 1 >= 0, isEmptyAt(i: i + 1, j: j - 1) == nil {
-                    res.append(Move(i: i + 1, j: j - 1))
+                    res.append(Move(i: i + 1, j: j - 1, took: nil))
                 }
             }
         }
@@ -189,7 +225,7 @@ class CheckerBoard : SCNNode {
         if i - 1 >= 0, j - 1 >= 0, let e = isEmptyAt(i: i - 1, j: j - 1), checker.side != e {
             // possible take
             if i - 2 >= 0, j - 2 >= 0, isEmptyAt(i: i - 2, j: j - 2) == nil, !blocked.contains((j - 2) * 8 + i - 2) {
-                let curr = Move(i: i - 2, j: j - 2)
+                let curr = Move(i: i - 2, j: j - 2, took: (j - 1) * 8 + i - 1)
                 let subst = search(checker, i: i - 2, j: j - 2, takes: true, blocked: nblock)
 
                 res.append(curr)
@@ -200,7 +236,7 @@ class CheckerBoard : SCNNode {
         // NOTE: down right
         if i + 1 < 8, j - 1 >= 0, let e = isEmptyAt(i: i + 1, j: j - 1), checker.side != e {
             if i + 2 < 8, j - 2 >= 0, isEmptyAt(i: i + 2, j: j - 2) == nil, !blocked.contains((j - 2) * 8 + i + 2) {
-                let curr = Move(i: i + 2, j: j - 2)
+                let curr = Move(i: i + 2, j: j - 2, took: (j - 1) * 8 + i + 1)
                 let subst = search(checker, i: i + 2, j: j - 2, takes: true, blocked: nblock)
 
                 res.append(curr)
@@ -211,7 +247,7 @@ class CheckerBoard : SCNNode {
         // NOTE: up left
         if i - 1 >= 0, j + 1 < 8, let e = isEmptyAt(i: i - 1, j: j + 1), checker.side != e {
             if i - 2 >= 0, j + 2 < 8, isEmptyAt(i: i - 2, j: j + 2) == nil, !blocked.contains((j + 2) * 8 + i - 2) {
-                let curr = Move(i: i - 2, j: j + 2)
+                let curr = Move(i: i - 2, j: j + 2, took: (j + 1) * 8 + i - 1)
                 let subst = search(checker, i: i - 2, j: j + 2, takes: true, blocked: nblock)
 
                 res.append(curr)
@@ -222,7 +258,7 @@ class CheckerBoard : SCNNode {
         // NOTE: up right
         if i + 1 < 8, j + 1 < 8, let e = isEmptyAt(i: i + 1, j: j + 1), checker.side != e {
             if i + 2 < 8, j + 2 < 8, isEmptyAt(i: i + 2, j: j + 2) == nil, !blocked.contains((j + 2) * 8 + i + 2) {
-                let curr = Move(i: i + 2, j: j + 2)
+                let curr = Move(i: i + 2, j: j + 2, took: (j + 1) * 8 + i + 1)
                 let subst = search(checker, i: i + 2, j: j + 2, takes: true, blocked: nblock)
 
                 res.append(curr)
@@ -244,14 +280,14 @@ class CheckerBoard : SCNNode {
                 
                 if (j < 3 && cell.isBlack){
                     let checker = Checker(side:.white, i: i, j: j)
-                    checker.position = placeCells(i: i, j: j, y: cellHeight - 0.01)
+                    checker.position = placeCells(i: i, j: j, y: checkerY)
                     whiteCheckers[j * 8 + i] = checker
                     addChildNode(checker)
                 }
                 
                 if (j > 4 && cell.isBlack){
                     let checker = Checker(side:.black, i: i, j: j)
-                    checker.position = placeCells(i: i, j: j, y: cellHeight - 0.01)
+                    checker.position = placeCells(i: i, j: j, y: checkerY)
                     blackCheckers[j * 8 + i] = checker
                     addChildNode(checker)
                 }
@@ -277,3 +313,4 @@ private extension Sequence where Iterator.Element == Move {
 private let cellSize = CGFloat(0.05)
 private let boardSize = CGFloat(0.4)
 private let cellHeight = CGFloat(0.03)
+private let checkerY = cellHeight - 0.01
