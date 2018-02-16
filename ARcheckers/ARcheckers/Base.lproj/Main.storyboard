@@ -45,6 +45,16 @@
                                     <action selector="joinNow:" destination="Oz8-VS-oY4" eventType="touchUpInside" id="eck-Qb-2ne"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o2g-ih-i7K">
+                                <rect key="frame" x="148.5" y="432" width="78" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Just play">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="justPlay:" destination="Oz8-VS-oY4" eventType="touchUpInside" id="eyu-DS-hWS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -53,8 +63,10 @@
                             <constraint firstItem="6DU-C1-Cax" firstAttribute="centerY" secondItem="1BD-9M-0it" secondAttribute="centerY" multiplier="2/3" id="Nk5-dU-VTj"/>
                             <constraint firstItem="alv-hD-eio" firstAttribute="centerX" secondItem="1BD-9M-0it" secondAttribute="centerX" id="a77-Jd-bzO"/>
                             <constraint firstItem="ZHC-WP-zIp" firstAttribute="centerX" secondItem="1BD-9M-0it" secondAttribute="centerX" id="bek-84-cAC"/>
+                            <constraint firstItem="o2g-ih-i7K" firstAttribute="centerX" secondItem="1BD-9M-0it" secondAttribute="centerX" id="khi-Ju-gvR"/>
                             <constraint firstItem="alv-hD-eio" firstAttribute="centerY" secondItem="1BD-9M-0it" secondAttribute="centerY" id="phE-O2-20Q"/>
                             <constraint firstItem="6DU-C1-Cax" firstAttribute="centerX" secondItem="1BD-9M-0it" secondAttribute="centerX" id="x3N-3T-vOs"/>
+                            <constraint firstItem="o2g-ih-i7K" firstAttribute="top" secondItem="ZHC-WP-zIp" secondAttribute="bottom" constant="24.5" id="zdY-2Y-zIV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ARR-F4-DK7"/>
                     </view>
