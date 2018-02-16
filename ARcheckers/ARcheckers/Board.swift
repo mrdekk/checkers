@@ -26,7 +26,7 @@ class Board : SCNNode {
 
         let mtrl = SCNMaterial()
         let img = UIImage(named: "board")
-        mtrl.diffuse.contents = img 
+        mtrl.diffuse.contents = img
 //        let clr = UIColor.cyan.withAlphaComponent(0.25)
 //        mtrl.diffuse.contents = clr
         geom.materials = [mtrl]
