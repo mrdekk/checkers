@@ -23,6 +23,10 @@
 		CE4881AC2037360100B797C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE4881AA2037360100B797C9 /* Main.storyboard */; };
 		CE4881AE2037360100B797C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE4881AD2037360100B797C9 /* Assets.xcassets */; };
 		CE4881B12037360100B797C9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE4881AF2037360100B797C9 /* LaunchScreen.storyboard */; };
+		CEEAFB28203766F6007AF3F6 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEEAFB27203766F6007AF3F6 /* GameKit.framework */; };
+		CEEAFB2920376701007AF3F6 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEEAFB27203766F6007AF3F6 /* GameKit.framework */; };
+		CEEAFB2B20376A43007AF3F6 /* InitialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEAFB2A20376A43007AF3F6 /* InitialVC.swift */; };
+		CEEAFB2C20376A43007AF3F6 /* InitialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEAFB2A20376A43007AF3F6 /* InitialVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +42,8 @@
 		CE4881AD2037360100B797C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE4881B02037360100B797C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE4881B22037360100B797C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEEAFB27203766F6007AF3F6 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		CEEAFB2A20376A43007AF3F6 /* InitialVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEEAFB2920376701007AF3F6 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEEAFB28203766F6007AF3F6 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +72,7 @@
 				CE4881A52037360100B797C9 /* ARcheckers */,
 				CE4881A42037360100B797C9 /* Products */,
 				940B705320373AA400F10866 /* ARcheckers copy-Info.plist */,
+				CEEAFB1E203765A1007AF3F6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,6 +92,7 @@
 				940B7043203738D100F10866 /* Board.swift */,
 				CE4881A62037360100B797C9 /* AppDelegate.swift */,
 				CE4881A82037360100B797C9 /* ViewController.swift */,
+				CEEAFB2A20376A43007AF3F6 /* InitialVC.swift */,
 				CE4881AA2037360100B797C9 /* Main.storyboard */,
 				CE4881AD2037360100B797C9 /* Assets.xcassets */,
 				CE4881AF2037360100B797C9 /* LaunchScreen.storyboard */,
@@ -90,6 +100,14 @@
 				940B705420373EC000F10866 /* CheckerBoard.swift */,
 			);
 			path = ARcheckers;
+			sourceTree = "<group>";
+		};
+		CEEAFB1E203765A1007AF3F6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CEEAFB27203766F6007AF3F6 /* GameKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,10 +159,20 @@
 				TargetAttributes = {
 					940B704520373AA400F10866 = {
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
+						};
 					};
 					CE4881A22037360100B797C9 = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -198,6 +226,7 @@
 				940B704720373AA400F10866 /* ViewController.swift in Sources */,
 				940B705920374B4C00F10866 /* Checker.swift in Sources */,
 				940B704820373AA400F10866 /* AppDelegate.swift in Sources */,
+				CEEAFB2C20376A43007AF3F6 /* InitialVC.swift in Sources */,
 				940B7056203740DF00F10866 /* CheckerBoard.swift in Sources */,
 				940B704920373AA400F10866 /* Board.swift in Sources */,
 			);
@@ -210,6 +239,7 @@
 				CE4881A92037360100B797C9 /* ViewController.swift in Sources */,
 				940B705820374B4A00F10866 /* Checker.swift in Sources */,
 				CE4881A72037360100B797C9 /* AppDelegate.swift in Sources */,
+				CEEAFB2B20376A43007AF3F6 /* InitialVC.swift in Sources */,
 				940B705520373EC000F10866 /* CheckerBoard.swift in Sources */,
 				940B7044203738D100F10866 /* Board.swift in Sources */,
 			);
@@ -378,12 +408,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = CNFAR2GRNS;
 				INFOPLIST_FILE = ARcheckers/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.yandex.ARcheckers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "992db786-4b89-4816-9cec-2f811c8eae19";
+				PROVISIONING_PROFILE_SPECIFIER = ARcheckers;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -393,12 +425,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CNFAR2GRNS;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ARcheckers/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.yandex.ARcheckers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

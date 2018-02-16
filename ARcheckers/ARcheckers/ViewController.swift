@@ -17,6 +17,14 @@ enum GameMode {
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var closeButton: UIButton!
+    
+    @IBAction func closeNow(_ sender: UIButton) {
+        self.dismiss(animated: true) {
+            //clear gameCenterSession
+        }
+    }
+    
     private var mode: GameMode = .initializing
 
     private var checkerboard: CheckerBoard? = nil

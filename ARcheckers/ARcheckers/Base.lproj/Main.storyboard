@@ -1,15 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Oz8-VS-oY4">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--InitialVC-->
+        <scene sceneID="d0T-Ks-Vmb">
+            <objects>
+                <viewController id="Oz8-VS-oY4" customClass="InitialVC" customModule="ARcheckers" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1BD-9M-0it">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="alv-hD-eio">
+                                <rect key="frame" x="119" y="315.5" width="136" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Start new game">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="startNow:" destination="Oz8-VS-oY4" eventType="touchUpInside" id="ZQA-f4-CQ8"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Checkers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6DU-C1-Cax">
+                                <rect key="frame" x="75.5" y="189" width="225.5" height="67"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="56"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZHC-WP-zIp">
+                                <rect key="frame" x="122" y="371.5" width="131" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Join new game">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="joinNow:" destination="Oz8-VS-oY4" eventType="touchUpInside" id="eck-Qb-2ne"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ZHC-WP-zIp" firstAttribute="top" secondItem="alv-hD-eio" secondAttribute="bottom" constant="20" id="5Zg-X7-nUO"/>
+                            <constraint firstItem="6DU-C1-Cax" firstAttribute="centerY" secondItem="1BD-9M-0it" secondAttribute="centerY" multiplier="2/3" id="Nk5-dU-VTj"/>
+                            <constraint firstItem="alv-hD-eio" firstAttribute="centerX" secondItem="1BD-9M-0it" secondAttribute="centerX" id="a77-Jd-bzO"/>
+                            <constraint firstItem="ZHC-WP-zIp" firstAttribute="centerX" secondItem="1BD-9M-0it" secondAttribute="centerX" id="bek-84-cAC"/>
+                            <constraint firstItem="alv-hD-eio" firstAttribute="centerY" secondItem="1BD-9M-0it" secondAttribute="centerY" id="phE-O2-20Q"/>
+                            <constraint firstItem="6DU-C1-Cax" firstAttribute="centerX" secondItem="1BD-9M-0it" secondAttribute="centerX" id="x3N-3T-vOs"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ARR-F4-DK7"/>
+                    </view>
+                    <connections>
+                        <outlet property="joinButton" destination="ZHC-WP-zIp" id="R9z-MG-4yv"/>
+                        <outlet property="startButton" destination="alv-hD-eio" id="A0x-O4-f5W"/>
+                        <outlet property="titleLabel" destination="6DU-C1-Cax" id="hen-jD-9fm"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="showARScene" id="lPC-IQ-p22"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OcG-E4-MuO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-116" y="132.68365817091455"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -19,24 +78,40 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tji-fC-ClH">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </arscnView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iLp-1h-Wcf">
+                                <rect key="frame" x="259" y="16" width="100" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="PKF-Ct-yj8"/>
+                                </constraints>
+                                <state key="normal" title="Close">
+                                    <color key="titleColor" red="0.82043393782383423" green="0.024475056811266296" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeNow:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MKu-iH-e4u"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Tji-fC-ClH" secondAttribute="bottom" id="C2M-ky-lir"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Tji-fC-ClH" secondAttribute="trailing" id="Cjm-E8-6LD"/>
+                            <constraint firstItem="Tji-fC-ClH" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="EdV-ET-zB6"/>
                             <constraint firstItem="Tji-fC-ClH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="KHX-Vx-kcU"/>
-                            <constraint firstItem="Tji-fC-ClH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="hua-zy-gFn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="iLp-1h-Wcf" secondAttribute="trailing" constant="16" id="a1u-DZ-AiS"/>
+                            <constraint firstItem="iLp-1h-Wcf" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="16" id="lYi-J2-k6R"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="closeButton" destination="iLp-1h-Wcf" id="gi8-0Z-yqX"/>
                         <outlet property="sceneView" destination="Tji-fC-ClH" id="Fmx-eo-kps"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="808.79999999999995" y="132.68365817091455"/>
         </scene>
     </scenes>
 </document>
