@@ -32,7 +32,11 @@ class InitialVC: UIViewController, GKGameCenterControllerDelegate, GKLocalPlayer
     @IBAction func joinNow(_ sender: UIButton) {
         
     }
-    
+
+    @IBAction func justPlay(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "showARScene", sender: self)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Call the GC authentication controller
