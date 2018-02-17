@@ -80,12 +80,20 @@ class ViewController: UIViewController {
             break
 
         case .white:
-            if isHost {
+            if peerId != nil {
+                if isHost {
+                    hitTestChecker(side: .white, hit: hit)
+                }
+            } else {
                 hitTestChecker(side: .white, hit: hit)
             }
 
         case .black:
-            if !isHost {
+            if peerId != nil {
+                if !isHost {
+                    hitTestChecker(side: .black, hit: hit)
+                }
+            } else {
                 hitTestChecker(side: .black, hit: hit)
             }
         }
@@ -100,13 +108,17 @@ class ViewController: UIViewController {
 
         self.checkerboard = cb
 
-        mode = .waiting
+        if peerId != nil {
+            mode = .waiting
 
-        let msg: [String: Any] = [
-            "init": true
-        ]
-        let data = try! JSONSerialization.data(withJSONObject: msg, options: [])
-        Connector.shared.send(data: data, to: peerId!)
+            let msg: [String: Any] = [
+                "init": true
+            ]
+            let data = try! JSONSerialization.data(withJSONObject: msg, options: [])
+            Connector.shared.send(data: data, to: peerId!)
+        } else {
+            mode = .white
+        }
     }
 
     private func hitTestChecker(side: Checker.Side, hit: SCNHitTestResult) {
@@ -115,13 +127,15 @@ class ViewController: UIViewController {
             if let cb = checkerboard, checker.side == side {
                 let moves = cb.took(checker)
                 cb.highlight(moves: moves)
-                let msg: [String: Any] = [
-                    "type": "took",
-                    "i": checker.i,
-                    "j": checker.j
-                ]
-                let data = try! JSONSerialization.data(withJSONObject: msg, options: [])
-                Connector.shared.send(data: data, to: peerId!)
+                if peerId != nil {
+                    let msg: [String: Any] = [
+                        "type": "took",
+                        "i": checker.i,
+                        "j": checker.j
+                    ]
+                    let data = try! JSONSerialization.data(withJSONObject: msg, options: [])
+                    Connector.shared.send(data: data, to: peerId!)
+                }
             }
 
         case let cell as CheckerBoardCell:
@@ -148,13 +162,15 @@ class ViewController: UIViewController {
                 default: break
                 }
 
-                let msg: [String: Any] = [
-                    "type": "place",
-                    "i": cell.i,
-                    "j": cell.j
-                ]
-                let data = try! JSONSerialization.data(withJSONObject: msg, options: [])
-                Connector.shared.send(data: data, to: peerId!)
+                if peerId != nil {
+                    let msg: [String: Any] = [
+                        "type": "place",
+                        "i": cell.i,
+                        "j": cell.j
+                    ]
+                    let data = try! JSONSerialization.data(withJSONObject: msg, options: [])
+                    Connector.shared.send(data: data, to: peerId!)
+                }
             }
 
         default:
