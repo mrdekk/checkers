@@ -8,15 +8,16 @@
 
 import UIKit
 import ARKit
-import GameKit
+import MultipeerConnectivity
 
 enum GameMode {
     case initializing
+    case waiting
     case black
     case white
 }
 
-class ViewController: UIViewController, GKLocalPlayerListener {
+class ViewController: UIViewController {
 
     @IBOutlet weak var closeButton: UIButton!
     
@@ -25,12 +26,13 @@ class ViewController: UIViewController, GKLocalPlayerListener {
             //clear gameCenterSession
         }
     }
-    
-    public var match : GKTurnBasedMatch? = nil
-    
+        
     private var mode: GameMode = .initializing
 
     private var checkerboard: CheckerBoard? = nil
+
+    var peerId: MCPeerID? = nil
+    var isHost: Bool = false
 
     @IBOutlet private weak var sceneView: ARSCNView! {
         didSet {
@@ -71,9 +73,21 @@ class ViewController: UIViewController, GKLocalPlayerListener {
         }
 
         switch mode {
-        case .initializing: hitTestAndPlaceCheckerboard(hit)
-        case .white: hitTestChecker(side: .white, hit: hit)
-        case .black: hitTestChecker(side: .black, hit: hit)
+        case .initializing:
+            hitTestAndPlaceCheckerboard(hit)
+
+        case .waiting:
+            break
+
+        case .white:
+            if isHost {
+                hitTestChecker(side: .white, hit: hit)
+            }
+
+        case .black:
+            if !isHost {
+                hitTestChecker(side: .black, hit: hit)
+            }
         }
     }
 
@@ -86,13 +100,13 @@ class ViewController: UIViewController, GKLocalPlayerListener {
 
         self.checkerboard = cb
 
-        mode = .white
-        let participant = match?.participants
-        let msgReady = [String : Any]()
-        let packet = try! JSONSerialization.data(withJSONObject: msgReady, options:[])
-        match?.endTurn(withNextParticipants: [participant!.last!], turnTimeout: 1000, match: packet, completionHandler: { (_) in
-            // End of the turn
-        })
+        mode = .waiting
+
+        let msg: [String: Any] = [
+            "init": true
+        ]
+        let data = try! JSONSerialization.data(withJSONObject: msg, options: [])
+        Connector.shared.send(data: data, to: peerId!)
     }
 
     private func hitTestChecker(side: Checker.Side, hit: SCNHitTestResult) {
@@ -101,6 +115,13 @@ class ViewController: UIViewController, GKLocalPlayerListener {
             if let cb = checkerboard, checker.side == side {
                 let moves = cb.took(checker)
                 cb.highlight(moves: moves)
+                let msg: [String: Any] = [
+                    "type": "took",
+                    "i": checker.i,
+                    "j": checker.j
+                ]
+                let data = try! JSONSerialization.data(withJSONObject: msg, options: [])
+                Connector.shared.send(data: data, to: peerId!)
             }
 
         case let cell as CheckerBoardCell:
@@ -126,6 +147,14 @@ class ViewController: UIViewController, GKLocalPlayerListener {
 
                 default: break
                 }
+
+                let msg: [String: Any] = [
+                    "type": "place",
+                    "i": cell.i,
+                    "j": cell.j
+                ]
+                let data = try! JSONSerialization.data(withJSONObject: msg, options: [])
+                Connector.shared.send(data: data, to: peerId!)
             }
 
         default:
@@ -151,5 +180,62 @@ extension ViewController : ARSCNViewDelegate {
 
     func renderer(_ renderer: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor) {
         boards[anchor.identifier] = nil
+    }
+}
+
+extension ViewController : ConnectorDelegate2 {
+    func didDisconnected(from peer: MCPeerID) {
+        if let pid = peerId, pid == peer {
+            Connector.shared.delegate2 = nil
+            dismiss(animated: true, completion: nil)
+        }
+    }
+
+    func didReceive(data: Data, from peer: MCPeerID) {
+        guard let pid = peerId, pid == peer else { return }
+
+        switch mode {
+        case .initializing:
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+                guard let sself = self else { return }
+                sself.didReceive(data: data, from: peer)
+            }
+
+        case .waiting:
+            mode = .white
+
+        case .white: fallthrough
+        case .black:
+            let msg = (try! JSONSerialization.jsonObject(with: data, options: [])) as! [String: Any]
+            let type = msg["type"] as! String
+            let i = msg["i"] as! Int
+            let j = msg["j"] as! Int
+            if type == "took", let cb = checkerboard, let checker = cb.checkers[j * 8 + i] {
+                let moves = cb.took(checker)
+                cb.highlight(moves: moves)
+            } else if type == "place", let cb = checkerboard, let cell = cb.cells[j * 8 + i], cb.place(cell) {
+                switch mode {
+                case .white:
+                    if cb.isWin(side: .white) {
+                        let alert = UIAlertController(title: "White Wins", message: "Hurray! White wins!", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        present(alert, animated: true, completion: nil)
+                        // TODO: go back in VC
+                    }
+                    mode = .black
+
+                case .black:
+                    if cb.isWin(side: .black) {
+                        let alert = UIAlertController(title: "Black Wins", message: "Hurray! Black wins!", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        present(alert, animated: true, completion: nil)
+                        // TODO: go back in VC
+                    }
+                    mode = .white
+
+                default: break
+                }
+            }
+        }
     }
 }

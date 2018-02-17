@@ -74,7 +74,7 @@ struct Move {
 
 class CheckerBoard : SCNNode {
 
-    private var cells: [Int: CheckerBoardCell] = [:]
+    private(set) var cells: [Int: CheckerBoardCell] = [:]
     private var whiteCheckers : [Int: Checker] = [:]
     private var blackCheckers : [Int: Checker] = [:]
 
@@ -87,6 +87,12 @@ class CheckerBoard : SCNNode {
         }
     }
     private var moves: [Move] = []
+
+    var checkers: [Int: Checker] {
+        return whiteCheckers.reduce(into: blackCheckers) { (res, item) in
+            res[item.key] = item.value
+        }
+    }
 
     public func highlight(moves: [Move]) {
         let dest = moves.allowed
