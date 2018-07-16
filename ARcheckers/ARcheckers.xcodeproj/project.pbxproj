@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		266B4A249C883774A70BD5A2 /* Pods_ARcheckersMrDekk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 311711A02B13A3519A056F18 /* Pods_ARcheckersMrDekk.framework */; };
+		9403D3A620FC80B80066D791 /* InitMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9403D3A520FC80B80066D791 /* InitMessage.swift */; };
+		9403D3A720FC80B80066D791 /* InitMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9403D3A520FC80B80066D791 /* InitMessage.swift */; };
+		9403D3A920FC83610066D791 /* ARGameConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9403D3A820FC83610066D791 /* ARGameConnector.swift */; };
+		9403D3AA20FC83610066D791 /* ARGameConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9403D3A820FC83610066D791 /* ARGameConnector.swift */; };
+		9403D3AC20FC83830066D791 /* ARGameHostConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9403D3AB20FC83830066D791 /* ARGameHostConnector.swift */; };
+		9403D3AD20FC83830066D791 /* ARGameHostConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9403D3AB20FC83830066D791 /* ARGameHostConnector.swift */; };
 		9407A8AC2037A42200E286D5 /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9407A8AB2037A42200E286D5 /* MultipeerConnectivity.framework */; };
 		9407A8AE2037A43B00E286D5 /* Connector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9407A8AD2037A43B00E286D5 /* Connector.swift */; };
 		9407A8AF2037A4E100E286D5 /* Connector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9407A8AD2037A43B00E286D5 /* Connector.swift */; };
@@ -21,6 +28,11 @@
 		940B7056203740DF00F10866 /* CheckerBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B705420373EC000F10866 /* CheckerBoard.swift */; };
 		940B705820374B4A00F10866 /* Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B705720374B4A00F10866 /* Checker.swift */; };
 		940B705920374B4C00F10866 /* Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940B705720374B4A00F10866 /* Checker.swift */; };
+		9492CC4F20F86B0A002D33F9 /* ARGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9492CC4E20F86B0A002D33F9 /* ARGameViewController.swift */; };
+		9492CC5020F86B0A002D33F9 /* ARGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9492CC4E20F86B0A002D33F9 /* ARGameViewController.swift */; };
+		9492CC5220F870FE002D33F9 /* ARGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9492CC5120F870FE002D33F9 /* ARGameController.swift */; };
+		9492CC5320F870FE002D33F9 /* ARGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9492CC5120F870FE002D33F9 /* ARGameController.swift */; };
+		B0DD7B509D1A2C14E7744E47 /* Pods_ARcheckers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 539B4D48378F4FD1FFF0FB84 /* Pods_ARcheckers.framework */; };
 		CE4881A72037360100B797C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4881A62037360100B797C9 /* AppDelegate.swift */; };
 		CE4881A92037360100B797C9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4881A82037360100B797C9 /* ViewController.swift */; };
 		CE4881AC2037360100B797C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE4881AA2037360100B797C9 /* Main.storyboard */; };
@@ -32,6 +44,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1B31A0448B6FD32A5C7E3C12 /* Pods-ARcheckersMrDekk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARcheckersMrDekk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARcheckersMrDekk/Pods-ARcheckersMrDekk.debug.xcconfig"; sourceTree = "<group>"; };
+		311711A02B13A3519A056F18 /* Pods_ARcheckersMrDekk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARcheckersMrDekk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		539B4D48378F4FD1FFF0FB84 /* Pods_ARcheckers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARcheckers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		90BD42D6730720CE942FDCDB /* Pods-ARcheckers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARcheckers.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARcheckers/Pods-ARcheckers.debug.xcconfig"; sourceTree = "<group>"; };
+		9403D3A520FC80B80066D791 /* InitMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitMessage.swift; sourceTree = "<group>"; };
+		9403D3A820FC83610066D791 /* ARGameConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARGameConnector.swift; sourceTree = "<group>"; };
+		9403D3AB20FC83830066D791 /* ARGameHostConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARGameHostConnector.swift; sourceTree = "<group>"; };
 		9407A8AB2037A42200E286D5 /* MultipeerConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultipeerConnectivity.framework; path = System/Library/Frameworks/MultipeerConnectivity.framework; sourceTree = SDKROOT; };
 		9407A8AD2037A43B00E286D5 /* Connector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connector.swift; sourceTree = "<group>"; };
 		940B7043203738D100F10866 /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
@@ -39,6 +58,8 @@
 		940B705320373AA400F10866 /* ARcheckers copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ARcheckers copy-Info.plist"; path = "/Users/mrdekk/App/experiments/arkit/checkers2/ARcheckers/ARcheckers copy-Info.plist"; sourceTree = "<absolute>"; };
 		940B705420373EC000F10866 /* CheckerBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckerBoard.swift; sourceTree = "<group>"; };
 		940B705720374B4A00F10866 /* Checker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Checker.swift; sourceTree = "<group>"; };
+		9492CC4E20F86B0A002D33F9 /* ARGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARGameViewController.swift; sourceTree = "<group>"; };
+		9492CC5120F870FE002D33F9 /* ARGameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARGameController.swift; sourceTree = "<group>"; };
 		CE4881A32037360100B797C9 /* ARcheckers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARcheckers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE4881A62037360100B797C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE4881A82037360100B797C9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -48,6 +69,8 @@
 		CE4881B22037360100B797C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEEAFB27203766F6007AF3F6 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		CEEAFB2A20376A43007AF3F6 /* InitialVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialVC.swift; sourceTree = "<group>"; };
+		E3309B1BEFFADA4A7DE961C3 /* Pods-ARcheckers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARcheckers.release.xcconfig"; path = "Pods/Target Support Files/Pods-ARcheckers/Pods-ARcheckers.release.xcconfig"; sourceTree = "<group>"; };
+		FD41B4779C3A2AE2C87DF064 /* Pods-ARcheckersMrDekk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARcheckersMrDekk.release.xcconfig"; path = "Pods/Target Support Files/Pods-ARcheckersMrDekk/Pods-ARcheckersMrDekk.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +79,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9407A8AC2037A42200E286D5 /* MultipeerConnectivity.framework in Frameworks */,
+				266B4A249C883774A70BD5A2 /* Pods_ARcheckersMrDekk.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,12 +88,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEEAFB28203766F6007AF3F6 /* GameKit.framework in Frameworks */,
+				B0DD7B509D1A2C14E7744E47 /* Pods_ARcheckers.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9403D3A420FC807F0066D791 /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				9403D3A520FC80B80066D791 /* InitMessage.swift */,
+			);
+			path = Messages;
+			sourceTree = "<group>";
+		};
+		B7A144FF67B705F898D109C5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				90BD42D6730720CE942FDCDB /* Pods-ARcheckers.debug.xcconfig */,
+				E3309B1BEFFADA4A7DE961C3 /* Pods-ARcheckers.release.xcconfig */,
+				1B31A0448B6FD32A5C7E3C12 /* Pods-ARcheckersMrDekk.debug.xcconfig */,
+				FD41B4779C3A2AE2C87DF064 /* Pods-ARcheckersMrDekk.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		CE48819A2037360100B797C9 = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +121,7 @@
 				CE4881A42037360100B797C9 /* Products */,
 				940B705320373AA400F10866 /* ARcheckers copy-Info.plist */,
 				CEEAFB1E203765A1007AF3F6 /* Frameworks */,
+				B7A144FF67B705F898D109C5 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -92,6 +137,7 @@
 		CE4881A52037360100B797C9 /* ARcheckers */ = {
 			isa = PBXGroup;
 			children = (
+				9403D3A420FC807F0066D791 /* Messages */,
 				940B705720374B4A00F10866 /* Checker.swift */,
 				940B7043203738D100F10866 /* Board.swift */,
 				CE4881A62037360100B797C9 /* AppDelegate.swift */,
@@ -103,6 +149,10 @@
 				CE4881B22037360100B797C9 /* Info.plist */,
 				940B705420373EC000F10866 /* CheckerBoard.swift */,
 				9407A8AD2037A43B00E286D5 /* Connector.swift */,
+				9492CC4E20F86B0A002D33F9 /* ARGameViewController.swift */,
+				9492CC5120F870FE002D33F9 /* ARGameController.swift */,
+				9403D3A820FC83610066D791 /* ARGameConnector.swift */,
+				9403D3AB20FC83830066D791 /* ARGameHostConnector.swift */,
 			);
 			path = ARcheckers;
 			sourceTree = "<group>";
@@ -112,6 +162,8 @@
 			children = (
 				9407A8AB2037A42200E286D5 /* MultipeerConnectivity.framework */,
 				CEEAFB27203766F6007AF3F6 /* GameKit.framework */,
+				539B4D48378F4FD1FFF0FB84 /* Pods_ARcheckers.framework */,
+				311711A02B13A3519A056F18 /* Pods_ARcheckersMrDekk.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -123,9 +175,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 940B704F20373AA400F10866 /* Build configuration list for PBXNativeTarget "ARcheckersMrDekk" */;
 			buildPhases = (
+				A201206F13976CD97C02977B /* [CP] Check Pods Manifest.lock */,
 				940B704620373AA400F10866 /* Sources */,
 				940B704A20373AA400F10866 /* Frameworks */,
 				940B704B20373AA400F10866 /* Resources */,
+				B32EE1DA6248815C247AAE17 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -140,9 +194,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE4881B52037360100B797C9 /* Build configuration list for PBXNativeTarget "ARcheckers" */;
 			buildPhases = (
+				C614736191BFAD8F9DA787B5 /* [CP] Check Pods Manifest.lock */,
 				CE48819F2037360100B797C9 /* Sources */,
 				CE4881A02037360100B797C9 /* Frameworks */,
 				CE4881A12037360100B797C9 /* Resources */,
+				67CF23D7D1E44150B607AC0F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -164,7 +220,7 @@
 				ORGANIZATIONNAME = Yandex;
 				TargetAttributes = {
 					940B704520373AA400F10866 = {
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
 								enabled = 1;
@@ -224,18 +280,98 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		67CF23D7D1E44150B607AC0F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ARcheckers/Pods-ARcheckers-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ARcheckers/Pods-ARcheckers-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A201206F13976CD97C02977B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ARcheckersMrDekk-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B32EE1DA6248815C247AAE17 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ARcheckersMrDekk/Pods-ARcheckersMrDekk-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ARcheckersMrDekk/Pods-ARcheckersMrDekk-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C614736191BFAD8F9DA787B5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ARcheckers-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		940B704620373AA400F10866 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				940B704720373AA400F10866 /* ViewController.swift in Sources */,
+				9492CC5020F86B0A002D33F9 /* ARGameViewController.swift in Sources */,
+				9403D3AD20FC83830066D791 /* ARGameHostConnector.swift in Sources */,
 				940B705920374B4C00F10866 /* Checker.swift in Sources */,
 				940B704820373AA400F10866 /* AppDelegate.swift in Sources */,
 				CEEAFB2C20376A43007AF3F6 /* InitialVC.swift in Sources */,
 				940B7056203740DF00F10866 /* CheckerBoard.swift in Sources */,
 				9407A8AF2037A4E100E286D5 /* Connector.swift in Sources */,
 				940B704920373AA400F10866 /* Board.swift in Sources */,
+				9403D3AA20FC83610066D791 /* ARGameConnector.swift in Sources */,
+				9492CC5320F870FE002D33F9 /* ARGameController.swift in Sources */,
+				9403D3A720FC80B80066D791 /* InitMessage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,12 +380,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE4881A92037360100B797C9 /* ViewController.swift in Sources */,
+				9492CC4F20F86B0A002D33F9 /* ARGameViewController.swift in Sources */,
+				9403D3AC20FC83830066D791 /* ARGameHostConnector.swift in Sources */,
 				940B705820374B4A00F10866 /* Checker.swift in Sources */,
 				CE4881A72037360100B797C9 /* AppDelegate.swift in Sources */,
 				CEEAFB2B20376A43007AF3F6 /* InitialVC.swift in Sources */,
 				940B705520373EC000F10866 /* CheckerBoard.swift in Sources */,
 				9407A8AE2037A43B00E286D5 /* Connector.swift in Sources */,
 				940B7044203738D100F10866 /* Board.swift in Sources */,
+				9403D3A920FC83610066D791 /* ARGameConnector.swift in Sources */,
+				9492CC5220F870FE002D33F9 /* ARGameController.swift in Sources */,
+				9403D3A620FC80B80066D791 /* InitMessage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,16 +418,18 @@
 /* Begin XCBuildConfiguration section */
 		940B705020373AA400F10866 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1B31A0448B6FD32A5C7E3C12 /* Pods-ARcheckersMrDekk.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U4UTNV8D5K;
 				INFOPLIST_FILE = "ARcheckers copy-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.yandex.ARcheckers.MrDekk2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "01ff5897-1d20-45b1-9ebf-d4477fe8cf00";
-				PROVISIONING_PROFILE_SPECIFIER = "ARCheckers MrDekk2";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -294,10 +437,12 @@
 		};
 		940B705120373AA400F10866 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD41B4779C3A2AE2C87DF064 /* Pods-ARcheckersMrDekk.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U4UTNV8D5K;
 				INFOPLIST_FILE = "ARcheckers copy-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.yandex.ARcheckers.MrDekk2;
@@ -417,6 +562,7 @@
 		};
 		CE4881B62037360100B797C9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 90BD42D6730720CE942FDCDB /* Pods-ARcheckers.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
@@ -434,6 +580,7 @@
 		};
 		CE4881B72037360100B797C9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E3309B1BEFFADA4A7DE961C3 /* Pods-ARcheckers.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;

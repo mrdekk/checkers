@@ -19,8 +19,10 @@ class InitialVC: UIViewController {
     fileprivate var isHost: Bool = false
 
     @IBAction func startNow(_ sender: UIButton) {
-        isHost = true
-        Connector.shared.host()
+        let vc = ARGameViewController(isHost: true)
+        present(vc, animated: true, completion: nil)
+//        isHost = true
+//        Connector.shared.host()
     }
     
     @IBAction func joinNow(_ sender: UIButton) {
