@@ -57,11 +57,11 @@ final class ARGameController {
         vc.view.addSubview(noticeLabel)
     }
 
-    func layout(bounds: CGRect) {
+    func layout(bounds: CGRect, safeArea: UIEdgeInsets) {
         arSceneView.frame = bounds
         closeButton.frame = CGRect(
             x: bounds.width - closeButton.intrinsicContentSize.width - 16.0,
-            y: 16.0,
+            y: safeArea.top + 16.0,
             width: closeButton.intrinsicContentSize.width,
             height: closeButton.intrinsicContentSize.height
         )
@@ -77,7 +77,7 @@ final class ARGameController {
         )
         noticeLabel.frame = CGRect(
             x: 16.0,
-            y: 16.0,
+            y: safeArea.top + 16.0,
             width: availableWidth,
             height: lsize.height
         )
@@ -109,11 +109,9 @@ final class ARGameController {
 
     // MARKL: - Checkerboard
 
-    func placeCheckerboard(_ hit: SCNHitTestResult) {
-        let hitpos = hit.worldCoordinates
-
+    func placeCheckerboard(at pos: SCNVector3) {
         let cb = CheckerBoard()
-        cb.position = hitpos
+        cb.position = pos
         arSceneView.scene.rootNode.addChildNode(cb)
 
         self.board = cb
@@ -127,22 +125,26 @@ final class ARGameController {
         conf.planeDetection = .horizontal
         conf.initialWorldMap = worldMap
 
-        runWorldTracking(conf: conf)
+        runWorldTracking(conf: conf, containsWorldMap: worldMap != nil)
     }
 
     func setupWorldTrackingLegacy() {
         let conf = ARWorldTrackingConfiguration()
         conf.planeDetection = .horizontal
 
-        runWorldTracking(conf: conf)
+        runWorldTracking(conf: conf, containsWorldMap: false)
     }
 
     func pauseWorldTracking() {
         arSceneView.session.pause()
     }
 
-    private func runWorldTracking(conf: ARWorldTrackingConfiguration) {
-        arSceneView.session.run(conf)
+    private func runWorldTracking(conf: ARWorldTrackingConfiguration, containsWorldMap: Bool) {
+        if containsWorldMap {
+            arSceneView.session.run(conf, options: [.resetTracking, .removeExistingAnchors])
+        } else {
+            arSceneView.session.run(conf)
+        }
 
         arSceneView.showsStatistics = true
         arSceneView.autoenablesDefaultLighting = true

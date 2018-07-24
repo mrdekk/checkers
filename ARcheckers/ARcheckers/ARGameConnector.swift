@@ -19,6 +19,16 @@ protocol ARGameConnectorDelegate : class {
 protocol ARGameConnector : class {
     weak var delegate: ARGameConnectorDelegate? { set get }
 
-    func start()
+    func start(in vc: UIViewController)
     func send(data: Data, to peer: MCPeerID)
+}
+
+func onMainThread(_ block: @escaping () -> Void) {
+    if Thread.isMainThread {
+        block()
+    } else {
+        DispatchQueue.main.async {
+            block()
+        }
+    }
 }

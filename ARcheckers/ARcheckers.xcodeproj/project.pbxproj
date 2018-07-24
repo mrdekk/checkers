@@ -32,6 +32,16 @@
 		9492CC5020F86B0A002D33F9 /* ARGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9492CC4E20F86B0A002D33F9 /* ARGameViewController.swift */; };
 		9492CC5220F870FE002D33F9 /* ARGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9492CC5120F870FE002D33F9 /* ARGameController.swift */; };
 		9492CC5320F870FE002D33F9 /* ARGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9492CC5120F870FE002D33F9 /* ARGameController.swift */; };
+		94D1B8F52100CE8B00703940 /* ARGameJoinConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D1B8F42100CE8B00703940 /* ARGameJoinConnector.swift */; };
+		94D1B8F62100CE8B00703940 /* ARGameJoinConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D1B8F42100CE8B00703940 /* ARGameJoinConnector.swift */; };
+		94D1B8F82100D51B00703940 /* JoinSetupFinishedMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D1B8F72100D51B00703940 /* JoinSetupFinishedMessage.swift */; };
+		94D1B8F92100D51B00703940 /* JoinSetupFinishedMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D1B8F72100D51B00703940 /* JoinSetupFinishedMessage.swift */; };
+		94D1B8FB2100D60900703940 /* GameStartMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D1B8FA2100D60900703940 /* GameStartMessage.swift */; };
+		94D1B8FC2100D60900703940 /* GameStartMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D1B8FA2100D60900703940 /* GameStartMessage.swift */; };
+		94D1B8FE2100D7AF00703940 /* TookMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D1B8FD2100D7AF00703940 /* TookMessage.swift */; };
+		94D1B8FF2100D7AF00703940 /* TookMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D1B8FD2100D7AF00703940 /* TookMessage.swift */; };
+		94D1B9012100D80C00703940 /* PlaceMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D1B9002100D80C00703940 /* PlaceMessage.swift */; };
+		94D1B9022100D80C00703940 /* PlaceMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D1B9002100D80C00703940 /* PlaceMessage.swift */; };
 		B0DD7B509D1A2C14E7744E47 /* Pods_ARcheckers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 539B4D48378F4FD1FFF0FB84 /* Pods_ARcheckers.framework */; };
 		CE4881A72037360100B797C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4881A62037360100B797C9 /* AppDelegate.swift */; };
 		CE4881A92037360100B797C9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4881A82037360100B797C9 /* ViewController.swift */; };
@@ -60,6 +70,11 @@
 		940B705720374B4A00F10866 /* Checker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Checker.swift; sourceTree = "<group>"; };
 		9492CC4E20F86B0A002D33F9 /* ARGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARGameViewController.swift; sourceTree = "<group>"; };
 		9492CC5120F870FE002D33F9 /* ARGameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARGameController.swift; sourceTree = "<group>"; };
+		94D1B8F42100CE8B00703940 /* ARGameJoinConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARGameJoinConnector.swift; sourceTree = "<group>"; };
+		94D1B8F72100D51B00703940 /* JoinSetupFinishedMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinSetupFinishedMessage.swift; sourceTree = "<group>"; };
+		94D1B8FA2100D60900703940 /* GameStartMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStartMessage.swift; sourceTree = "<group>"; };
+		94D1B8FD2100D7AF00703940 /* TookMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TookMessage.swift; sourceTree = "<group>"; };
+		94D1B9002100D80C00703940 /* PlaceMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceMessage.swift; sourceTree = "<group>"; };
 		CE4881A32037360100B797C9 /* ARcheckers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARcheckers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE4881A62037360100B797C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE4881A82037360100B797C9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +114,10 @@
 			isa = PBXGroup;
 			children = (
 				9403D3A520FC80B80066D791 /* InitMessage.swift */,
+				94D1B8F72100D51B00703940 /* JoinSetupFinishedMessage.swift */,
+				94D1B8FA2100D60900703940 /* GameStartMessage.swift */,
+				94D1B8FD2100D7AF00703940 /* TookMessage.swift */,
+				94D1B9002100D80C00703940 /* PlaceMessage.swift */,
 			);
 			path = Messages;
 			sourceTree = "<group>";
@@ -153,6 +172,7 @@
 				9492CC5120F870FE002D33F9 /* ARGameController.swift */,
 				9403D3A820FC83610066D791 /* ARGameConnector.swift */,
 				9403D3AB20FC83830066D791 /* ARGameHostConnector.swift */,
+				94D1B8F42100CE8B00703940 /* ARGameJoinConnector.swift */,
 			);
 			path = ARcheckers;
 			sourceTree = "<group>";
@@ -364,13 +384,18 @@
 				9492CC5020F86B0A002D33F9 /* ARGameViewController.swift in Sources */,
 				9403D3AD20FC83830066D791 /* ARGameHostConnector.swift in Sources */,
 				940B705920374B4C00F10866 /* Checker.swift in Sources */,
+				94D1B9022100D80C00703940 /* PlaceMessage.swift in Sources */,
 				940B704820373AA400F10866 /* AppDelegate.swift in Sources */,
 				CEEAFB2C20376A43007AF3F6 /* InitialVC.swift in Sources */,
 				940B7056203740DF00F10866 /* CheckerBoard.swift in Sources */,
 				9407A8AF2037A4E100E286D5 /* Connector.swift in Sources */,
 				940B704920373AA400F10866 /* Board.swift in Sources */,
 				9403D3AA20FC83610066D791 /* ARGameConnector.swift in Sources */,
+				94D1B8F62100CE8B00703940 /* ARGameJoinConnector.swift in Sources */,
+				94D1B8F92100D51B00703940 /* JoinSetupFinishedMessage.swift in Sources */,
+				94D1B8FC2100D60900703940 /* GameStartMessage.swift in Sources */,
 				9492CC5320F870FE002D33F9 /* ARGameController.swift in Sources */,
+				94D1B8FF2100D7AF00703940 /* TookMessage.swift in Sources */,
 				9403D3A720FC80B80066D791 /* InitMessage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -383,13 +408,18 @@
 				9492CC4F20F86B0A002D33F9 /* ARGameViewController.swift in Sources */,
 				9403D3AC20FC83830066D791 /* ARGameHostConnector.swift in Sources */,
 				940B705820374B4A00F10866 /* Checker.swift in Sources */,
+				94D1B9012100D80C00703940 /* PlaceMessage.swift in Sources */,
 				CE4881A72037360100B797C9 /* AppDelegate.swift in Sources */,
 				CEEAFB2B20376A43007AF3F6 /* InitialVC.swift in Sources */,
 				940B705520373EC000F10866 /* CheckerBoard.swift in Sources */,
 				9407A8AE2037A43B00E286D5 /* Connector.swift in Sources */,
 				940B7044203738D100F10866 /* Board.swift in Sources */,
 				9403D3A920FC83610066D791 /* ARGameConnector.swift in Sources */,
+				94D1B8F52100CE8B00703940 /* ARGameJoinConnector.swift in Sources */,
+				94D1B8F82100D51B00703940 /* JoinSetupFinishedMessage.swift in Sources */,
+				94D1B8FB2100D60900703940 /* GameStartMessage.swift in Sources */,
 				9492CC5220F870FE002D33F9 /* ARGameController.swift in Sources */,
+				94D1B8FE2100D7AF00703940 /* TookMessage.swift in Sources */,
 				9403D3A620FC80B80066D791 /* InitMessage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
